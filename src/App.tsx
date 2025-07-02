@@ -1,39 +1,41 @@
-import React, { useEffect, useRef, useCallback, useMemo } from 'react';
+import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import HeroSection from './components/HeroSection';
 import ShopSection from './components/ShopSection';
 import AboutSection from './components/AboutSection';
 import StickyHeader from './components/StickyHeader';
-import FloatingElements from './components/FloatingElements';
-import CustomCursor from './components/CustomCursor';
+import MagneticCursor from './components/MagneticCursor';
+import OptimizedFloatingElements from './components/OptimizedFloatingElements';
+import Footer from './components/Footer';
 import { useScrollProgress } from './hooks/useScrollProgress';
-import { usePerformanceOptimization } from './hooks/usePerformanceOptimization';
 
 function App() {
   const { scrollY, windowHeight } = useScrollProgress();
-  const containerRef = useRef<HTMLDivElement>(null);
   
-  // Performance optimization hook
-  usePerformanceOptimization();
-  
-  // Calculate header visibility based on scroll with memoization
-  const heroThreshold = useMemo(() => windowHeight * 0.3, [windowHeight]);
+  // Calculate header visibility based on scroll
+  const heroThreshold = windowHeight * 0.3;
   const showHeader = scrollY > heroThreshold;
 
-  const scrollToTop = useCallback(() => {
-    document.getElementById('hero-section')?.scrollIntoView({ behavior: 'smooth' });
-  }, []);
+  // Calculate footer visibility - show when reaching about section
+  const aboutThreshold = windowHeight * 2; // Approximately when about section starts
+  const showFooter = scrollY > aboutThreshold;
 
-  const scrollToShop = useCallback(() => {
-    document.getElementById('shop-section')?.scrollIntoView({ behavior: 'smooth' });
-  }, []);
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
-  const scrollToAbout = useCallback(() => {
-    document.getElementById('about-section')?.scrollIntoView({ behavior: 'smooth' });
-  }, []);
+  const scrollToShop = () => {
+    const shopSection = document.getElementById('shop-section');
+    shopSection?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const scrollToAbout = () => {
+    const aboutSection = document.getElementById('about-section');
+    aboutSection?.scrollIntoView({ behavior: 'smooth' });
+  };
 
   return (
-    <div ref={containerRef} className="relative scroll-smooth">
+    <div className="relative">
       <StickyHeader 
         show={showHeader} 
         onLogoClick={scrollToTop}
@@ -41,19 +43,20 @@ function App() {
         onAboutClick={scrollToAbout}
       />
       
-      <FloatingElements containerRef={containerRef} />
-      <CustomCursor />
+      <MagneticCursor />
+      <OptimizedFloatingElements />
       
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
-        className="will-change-transform"
       >
         <HeroSection />
         <ShopSection />
         <AboutSection />
       </motion.div>
+
+      <Footer show={showFooter} />
     </div>
   );
 }

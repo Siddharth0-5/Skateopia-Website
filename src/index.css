@@ -4,22 +4,17 @@
 
 @layer base {
   html {
+    font-family: 'JetBrains Mono', 'Space Grotesk', system-ui, sans-serif;
     scroll-behavior: smooth;
     scroll-snap-type: y mandatory;
-    font-family: 'JetBrains Mono', 'Space Grotesk', system-ui, sans-serif;
   }
   
   body {
     margin: 0;
     padding: 0;
-    background: linear-gradient(135deg, #fb923c 0%, #ec4899 50%, #8b5cf6 100%);
+    padding-bottom: 0; /* Remove fixed padding since footer is conditional */
     overflow-x: hidden;
     cursor: none;
-  }
-  
-  section {
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
   }
   
   * {
@@ -29,6 +24,23 @@
   
   a, button {
     cursor: none;
+  }
+
+  /* Smooth scroll snapping */
+  section {
+    scroll-snap-align: start;
+    scroll-snap-stop: normal;
+  }
+  
+  /* Smooth scrolling with easing */
+  html {
+    scroll-padding-top: 0;
+  }
+  
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
   }
 }
 
@@ -44,133 +56,275 @@
   .border-3 {
     border-width: 3px;
   }
-  
-  .will-change-transform {
-    will-change: transform;
-    transform: translateZ(0);
-    backface-visibility: hidden;
-    perspective: 1000px;
+
+  /* Responsive utilities */
+  .text-responsive {
+    font-size: clamp(1rem, 4vw, 2rem);
   }
 
-  .animate-spin-slow {
-    animation: spin 3s linear infinite;
-  }
-
-  /* Fixed glitch effect that doesn't break layout */
-  .glitch-active {
-    position: relative;
-    display: inline-block;
-    /* Prevent layout shifts */
-    max-width: 100%;
-    overflow: hidden;
+  .heading-responsive {
+    font-size: clamp(2rem, 8vw, 6rem);
   }
 }
 
-/* Custom scrollbar with orange theme */
+/* Enhanced Glitch animations */
+@keyframes glitch-skew {
+  0% { transform: skew(0deg); }
+  10% { transform: skew(1deg); }
+  20% { transform: skew(-1deg); }
+  30% { transform: skew(2deg); }
+  40% { transform: skew(-1deg); }
+  50% { transform: skew(1deg); }
+  60% { transform: skew(-2deg); }
+  70% { transform: skew(1deg); }
+  80% { transform: skew(-1deg); }
+  90% { transform: skew(2deg); }
+  100% { transform: skew(0deg); }
+}
+
+@keyframes scanlines {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+@keyframes glitch-sweep {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes glitch-rgb {
+  0% { 
+    text-shadow: 2px 0 #ff0080, -2px 0 #00ffff, 0 0 10px #00ff41;
+    transform: translate(0);
+  }
+  20% { 
+    text-shadow: -2px 0 #ff0080, 2px 0 #00ffff, 0 0 15px #00ff41;
+    transform: translate(-1px, 1px);
+  }
+  40% { 
+    text-shadow: 2px 0 #ff0080, -2px 0 #00ffff, 0 0 8px #00ff41;
+    transform: translate(1px, -1px);
+  }
+  60% { 
+    text-shadow: -2px 0 #ff0080, 2px 0 #00ffff, 0 0 12px #00ff41;
+    transform: translate(-1px, -1px);
+  }
+  80% { 
+    text-shadow: 2px 0 #ff0080, -2px 0 #00ffff, 0 0 6px #00ff41;
+    transform: translate(1px, 1px);
+  }
+  100% { 
+    text-shadow: 2px 0 #ff0080, -2px 0 #00ffff, 0 0 10px #00ff41;
+    transform: translate(0);
+  }
+}
+
+.glitch-active {
+  animation: glitch-skew 0.3s ease-in-out;
+}
+
+.glitch-button-active {
+  animation: glitch-rgb 0.4s ease-in-out;
+}
+
+/* Artistic scrollbar that appears only when scrolling */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 6px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+::-webkit-scrollbar:hover {
+  opacity: 1;
+}
+
+body:hover ::-webkit-scrollbar {
+  opacity: 1;
 }
 
 ::-webkit-scrollbar-track {
-  background: linear-gradient(45deg, #fb923c, #ec4899);
+  background: linear-gradient(45deg, 
+    rgba(102, 126, 234, 0.1), 
+    rgba(118, 75, 162, 0.1)
+  );
+  border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(45deg, #f97316, #8b5cf6);
-  border-radius: 5px;
+  background: linear-gradient(45deg, 
+    #ff6b6b, 
+    #4ecdc4, 
+    #45b7d1, 
+    #96ceb4, 
+    #feca57
+  );
+  border-radius: 3px;
+  background-size: 200% 200%;
+  animation: scrollbar-gradient 3s ease infinite;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(45deg, #ea580c, #7c3aed);
+  background: linear-gradient(45deg, 
+    #ff5252, 
+    #26c6da, 
+    #42a5f5, 
+    #66bb6a, 
+    #ffca28
+  );
 }
 
-/* Enhanced selection colors with orange theme */
+@keyframes scrollbar-gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Show scrollbar only when scrolling */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+  transition: scrollbar-color 0.3s ease;
+}
+
+html:hover {
+  scrollbar-color: #ff6b6b rgba(102, 126, 234, 0.1);
+}
+
+/* Enhanced selection colors */
 ::selection {
-  background: linear-gradient(45deg, #fb923c, #ec4899);
+  background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
   color: white;
 }
 
 ::-moz-selection {
-  background: linear-gradient(45deg, #fb923c, #ec4899);
+  background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
   color: white;
+}
+
+/* Enhanced focus states */
+button:focus,
+a:focus {
+  outline: 2px solid #00ff41;
+  outline-offset: 2px;
 }
 
 /* Performance optimizations */
 * {
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-              opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-              color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: auto;
 }
 
-/* Enhanced focus states with orange theme */
-button:focus,
-a:focus {
-  outline: 3px solid #fb923c;
-  outline-offset: 2px;
-}
-
-/* Custom animations with performance optimizations */
-@keyframes float {
-  0%, 100% { 
-    transform: translateY(0px) translateZ(0); 
-  }
-  50% { 
-    transform: translateY(-20px) translateZ(0); 
-  }
-}
-
-@keyframes bounce-subtle {
-  0%, 100% { 
-    transform: scale(1) translateZ(0); 
-  }
-  50% { 
-    transform: scale(1.05) translateZ(0); 
-  }
-}
-
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.animate-float {
-  animation: float 3s ease-in-out infinite;
-}
-
-.animate-bounce-subtle {
-  animation: bounce-subtle 2s ease-in-out infinite;
-}
-
-/* Smooth scroll snapping with enhanced performance */
-.snap-start {
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
-}
-
-/* GPU acceleration for all animated elements */
-.gpu-accelerated {
-  transform: translateZ(0);
-  backface-visibility: hidden;
-  perspective: 1000px;
+.moving-element {
   will-change: transform;
 }
 
-/* Reduce motion for accessibility */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
+.animating-element {
+  will-change: transform, opacity;
+}
+
+/* Smoother scroll behavior */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: auto; /* Let CSS handle the smoothness */
   }
   
-  .glitch-active {
-    animation: none !important;
+  section {
+    scroll-snap-align: start;
+    scroll-snap-stop: normal;
+  }
+}
+
+/* Better scroll snapping with smooth transitions */
+body {
+  scroll-snap-type: y mandatory;
+  scroll-padding: 0;
+}
+
+section {
+  scroll-snap-align: start;
+  scroll-snap-stop: normal;
+}
+
+/* Ensure smooth scrolling on all browsers */
+* {
+  scroll-behavior: smooth;
+}
+
+/* Override harsh snapping with CSS transitions */
+html {
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+
+@supports (scroll-behavior: smooth) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Mobile-specific optimizations */
+@media (max-width: 768px) {
+  /* Reduce motion for better performance on mobile */
+  .moving-element {
+    animation-duration: 1.5s !important;
+  }
+  
+  /* Optimize text rendering */
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeSpeed;
+  }
+  
+  /* Reduce complexity of animations on mobile */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  /* Ensure footer doesn't cover content on mobile */
+  body {
+    padding-bottom: 0;
+  }
+  
+  /* Hide scrollbar on mobile for cleaner look */
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  
+  html {
+    scrollbar-width: none;
+  }
+}
+
+/* High DPI display optimizations */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  /* Larger touch targets */
+  button, a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Remove hover effects on touch devices */
+  .hover\:scale-105:hover {
+    transform: none;
+  }
+}
+
+/* Ensure proper spacing for conditional footer */
+@media (max-width: 768px) {
+  section:last-child {
+    margin-bottom: 0;
+    padding-bottom: 2rem;
   }
 }
