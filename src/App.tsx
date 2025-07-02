@@ -16,8 +16,8 @@ function App() {
   const heroThreshold = windowHeight * 0.3;
   const showHeader = scrollY > heroThreshold;
 
-  // Calculate footer visibility - show when reaching about section
-  const aboutThreshold = windowHeight * 2; // Approximately when about section starts
+  // Calculate footer visibility - show when reaching about section (earlier trigger)
+  const aboutThreshold = windowHeight * 1.5; // Show footer earlier
   const showFooter = scrollY > aboutThreshold;
 
   const scrollToTop = () => {
