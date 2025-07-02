@@ -1,0 +1,176 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-snap-type: y mandatory;
+    font-family: 'JetBrains Mono', 'Space Grotesk', system-ui, sans-serif;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #fb923c 0%, #ec4899 50%, #8b5cf6 100%);
+    overflow-x: hidden;
+    cursor: none;
+  }
+  
+  section {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+  
+  * {
+    box-sizing: border-box;
+    cursor: none;
+  }
+  
+  a, button {
+    cursor: none;
+  }
+}
+
+@layer utilities {
+  .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+  
+  .font-grotesk {
+    font-family: 'Space Grotesk', sans-serif;
+  }
+  
+  .border-3 {
+    border-width: 3px;
+  }
+  
+  .will-change-transform {
+    will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+
+  .animate-spin-slow {
+    animation: spin 3s linear infinite;
+  }
+
+  /* Fixed glitch effect that doesn't break layout */
+  .glitch-active {
+    position: relative;
+    display: inline-block;
+    /* Prevent layout shifts */
+    max-width: 100%;
+    overflow: hidden;
+  }
+}
+
+/* Custom scrollbar with orange theme */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: linear-gradient(45deg, #fb923c, #ec4899);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, #f97316, #8b5cf6);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, #ea580c, #7c3aed);
+}
+
+/* Enhanced selection colors with orange theme */
+::selection {
+  background: linear-gradient(45deg, #fb923c, #ec4899);
+  color: white;
+}
+
+::-moz-selection {
+  background: linear-gradient(45deg, #fb923c, #ec4899);
+  color: white;
+}
+
+/* Performance optimizations */
+* {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Enhanced focus states with orange theme */
+button:focus,
+a:focus {
+  outline: 3px solid #fb923c;
+  outline-offset: 2px;
+}
+
+/* Custom animations with performance optimizations */
+@keyframes float {
+  0%, 100% { 
+    transform: translateY(0px) translateZ(0); 
+  }
+  50% { 
+    transform: translateY(-20px) translateZ(0); 
+  }
+}
+
+@keyframes bounce-subtle {
+  0%, 100% { 
+    transform: scale(1) translateZ(0); 
+  }
+  50% { 
+    transform: scale(1.05) translateZ(0); 
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-bounce-subtle {
+  animation: bounce-subtle 2s ease-in-out infinite;
+}
+
+/* Smooth scroll snapping with enhanced performance */
+.snap-start {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+/* GPU acceleration for all animated elements */
+.gpu-accelerated {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+  will-change: transform;
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .glitch-active {
+    animation: none !important;
+  }
+}
