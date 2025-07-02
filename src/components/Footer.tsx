@@ -17,19 +17,19 @@ const Footer: React.FC<FooterProps> = ({ show }) => {
       }}
       transition={{ duration: 0.4, ease: "easeOut" }}
     >
-      {/* Artistic background with subtle patterns */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-purple-900/15 to-transparent backdrop-blur-md">
+      {/* Solid background with artistic patterns */}
+      <div className="absolute inset-0 bg-black/90 backdrop-blur-md">
         {/* Subtle grid pattern */}
         <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=%2230%22 height=%2230%22 viewBox=%220 0 30 30%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cg fill=%22none%22 stroke=%22%23ffffff%22 stroke-width=%220.3%22 stroke-opacity=%220.1%22%3E%3Cpath d=%22M0 15h30M15 0v30%22/%3E%3C/g%3E%3C/svg%3E')] opacity-40"></div>
         
         {/* Grain texture */}
         <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=%2240%22 height=%2240%22 viewBox=%220 0 40 40%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cg fill=%22%23ffffff%22 fill-opacity=%220.03%22%3E%3Ccircle cx=%225%22 cy=%225%22 r=%220.3%22/%3E%3Ccircle cx=%2215%22 cy=%2210%22 r=%220.2%22/%3E%3Ccircle cx=%2225%22 cy=%2215%22 r=%220.4%22/%3E%3Ccircle cx=%2210%22 cy=%2225%22 r=%220.3%22/%3E%3Ccircle cx=%2230%22 cy=%2230%22 r=%220.2%22/%3E%3C/g%3E%3C/svg%3E')] opacity-60"></div>
         
-        {/* Subtle border gradient */}
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-pink-500/30 to-transparent"></div>
+        {/* Top border gradient */}
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-pink-500/50 to-transparent"></div>
       </div>
       
-      <div className="relative px-4 sm:px-6 md:px-8 py-3 sm:py-4">
+      <div className="relative px-4 sm:px-6 md:px-8 py-4 sm:py-5">
         <div className="flex items-center justify-between max-w-6xl mx-auto">
           {/* Instagram Link */}
           <motion.a
@@ -60,7 +60,7 @@ const Footer: React.FC<FooterProps> = ({ show }) => {
           </motion.a>
 
           {/* Copyright */}
-          <div className="text-white/70 text-xs sm:text-sm font-mono">
+          <div className="text-white text-xs sm:text-sm font-mono">
             © 2024 SKATEOPIA. All rights reserved.
           </div>
         </div>

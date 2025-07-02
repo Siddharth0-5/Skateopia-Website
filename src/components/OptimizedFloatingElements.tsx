@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import { img2, img4, img5, img6, img7, img8, img9, img10, img13 } from '../assets';
 
 const OptimizedFloatingElements: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -41,10 +42,10 @@ const OptimizedFloatingElements: React.FC = () => {
     };
   }, []);
 
-  // Enhanced floating elements with new assets
+  // Enhanced floating elements with proper asset imports
   const elements = [
     {
-      src: "/src/assets/10.png",
+      src: img10,
       alt: "Skateopia Statue",
       className: "w-20 sm:w-24 md:w-32 h-auto opacity-70",
       position: { top: '15%', left: '8%' },
@@ -56,7 +57,7 @@ const OptimizedFloatingElements: React.FC = () => {
       delay: 0
     },
     {
-      src: "/src/assets/13.png",
+      src: img13,
       alt: "Skater Character",
       className: "w-16 sm:w-20 md:w-24 h-auto opacity-70",
       position: { top: '55%', right: '12%' },
@@ -68,7 +69,7 @@ const OptimizedFloatingElements: React.FC = () => {
       delay: 1
     },
     {
-      src: "/src/assets/2.png",
+      src: img2,
       alt: "Skate Shoe",
       className: "w-14 sm:w-16 md:w-20 h-auto opacity-70",
       position: { top: '35%', right: '5%' },
@@ -80,7 +81,7 @@ const OptimizedFloatingElements: React.FC = () => {
       delay: 2
     },
     {
-      src: "/src/assets/9.png",
+      src: img9,
       alt: "Pink Skateboard",
       className: "w-18 sm:w-22 md:w-28 h-auto opacity-70",
       position: { bottom: '25%', left: '3%' },
@@ -92,7 +93,7 @@ const OptimizedFloatingElements: React.FC = () => {
       delay: 0.5
     },
     {
-      src: "/src/assets/5.png",
+      src: img5,
       alt: "Red Star",
       className: "w-12 sm:w-14 md:w-16 h-auto opacity-70",
       position: { top: '12%', right: '20%' },
@@ -104,7 +105,7 @@ const OptimizedFloatingElements: React.FC = () => {
       delay: 0
     },
     {
-      src: "/src/assets/5.png",
+      src: img5,
       alt: "Red Star Small",
       className: "w-8 sm:w-10 md:w-12 h-auto opacity-50",
       position: { bottom: '18%', right: '35%' },
@@ -115,9 +116,8 @@ const OptimizedFloatingElements: React.FC = () => {
       duration: 8,
       delay: 3
     },
-    // New elements from attachments
     {
-      src: "/src/assets/4.png",
+      src: img4,
       alt: "Skater Silhouette",
       className: "w-16 sm:w-20 md:w-24 h-auto opacity-65",
       position: { top: '45%', left: '15%' },
@@ -129,7 +129,7 @@ const OptimizedFloatingElements: React.FC = () => {
       delay: 1.5
     },
     {
-      src: "/src/assets/6.png",
+      src: img6,
       alt: "Skull Design",
       className: "w-12 sm:w-14 md:w-18 h-auto opacity-60",
       position: { top: '25%', left: '70%' },
@@ -141,7 +141,7 @@ const OptimizedFloatingElements: React.FC = () => {
       delay: 2.5
     },
     {
-      src: "/src/assets/7.png",
+      src: img7,
       alt: "Skull Design Alt",
       className: "w-10 sm:w-12 md:w-16 h-auto opacity-55",
       position: { bottom: '35%', left: '25%' },
@@ -153,7 +153,7 @@ const OptimizedFloatingElements: React.FC = () => {
       delay: 4
     },
     {
-      src: "/src/assets/8.png",
+      src: img8,
       alt: "Melting Smiley",
       className: "w-14 sm:w-16 md:w-20 h-auto opacity-70",
       position: { top: '65%', left: '60%' },
@@ -163,19 +163,6 @@ const OptimizedFloatingElements: React.FC = () => {
       },
       duration: 4.8,
       delay: 3.2
-    },
-    {
-      src: "/src/assets/11.png",
-      alt: "Skateboarding Animal",
-      className: "w-18 sm:w-22 md:w-26 h-auto opacity-75",
-      position: { bottom: '45%', right: '8%' },
-      animation: {
-        y: [0, -22, 0],
-        x: [0, 5, -5, 0],
-        rotate: [0, 3, -3, 0],
-      },
-      duration: 5.8,
-      delay: 1.8
     }
   ];
 

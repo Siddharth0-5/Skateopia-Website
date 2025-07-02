@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import GlitchText from './GlitchText';
+import { skateopia_logo } from '../assets';
 
 const HeroSection: React.FC = () => {
   return (
@@ -62,7 +63,7 @@ const HeroSection: React.FC = () => {
               glitchInterval={12000}
             >
               <img 
-                src="/src/assets/Skateopia Logo.png" 
+                src={skateopia_logo} 
                 alt="SKATEOPIA" 
                 className="h-24 sm:h-32 md:h-40 lg:h-48 w-auto mx-auto drop-shadow-2xl transform hover:scale-105 transition-transform duration-300"
               />

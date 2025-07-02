@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { skateopia_logo } from '../assets';
 
 interface StickyHeaderProps {
   show: boolean;
@@ -58,7 +59,7 @@ const StickyHeader: React.FC<StickyHeaderProps> = ({ show, onLogoClick, onShopCl
             whileTap={{ scale: 0.95 }}
           >
             <img 
-              src="/src/assets/Skateopia Logo.png" 
+              src={skateopia_logo} 
               alt="SKATEOPIA" 
               className="h-8 sm:h-10 md:h-12 w-auto transition-all duration-300"
               style={{ 
