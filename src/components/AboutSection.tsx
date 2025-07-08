@@ -125,7 +125,8 @@ const AboutSection: React.FC = () => {
             </motion.div>
           </div>
 
-          {/* Meet the Founders Button */}
+          {/* Meet the Founders Button - COMMENTED OUT FOR NOW */}
+          {/* 
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -149,7 +150,6 @@ const AboutSection: React.FC = () => {
             </motion.button>
           </motion.div>
 
-          {/* Founders Dropdown - Made smaller */}
           <AnimatePresence>
             {showFounders && (
               <motion.div
@@ -207,6 +207,7 @@ const AboutSection: React.FC = () => {
               </motion.div>
             )}
           </AnimatePresence>
+          */}
         </div>
       </div>
     </section>

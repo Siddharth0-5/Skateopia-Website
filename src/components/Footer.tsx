@@ -61,7 +61,7 @@ const Footer: React.FC<FooterProps> = ({ show }) => {
 
           {/* Copyright */}
           <div className="text-white text-xs sm:text-sm font-mono">
-            © 2024 SKATEOPIA. All rights reserved.
+            © 2025 SKATEOPIA. All rights reserved.
           </div>
         </div>
       </div>

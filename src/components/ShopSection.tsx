@@ -57,7 +57,7 @@ const ShopSection: React.FC = () => {
             className="inline-block mb-8 sm:mb-12"
           >
             <GlitchButton
-              href="https://skateopia.in"
+              href="https://shop.skateopia.in"
               text="SHOP NOW"
             />
           </motion.div>
