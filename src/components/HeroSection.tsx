@@ -83,21 +83,9 @@ const HeroSection: React.FC = () => {
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 1.5 }}
-            className="mb-8 sm:mb-10"
-          >
-            <GlitchButton
-              href="https://shop.skateopia.in"
-              text="SHOP NOW"
-            />
-          </motion.div>
-          
-          <motion.div
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 1.8 }}
             className="text-white text-sm sm:text-base md:text-lg font-mono tracking-wide transform rotate-1 drop-shadow-lg"
           >
-            SCROLL TO EXPLORE THE CHAOS
+            SCROLL TO ENTER THE CHAOS
           </motion.div>
         </motion.div>
       </div>
@@ -105,86 +93,4 @@ const HeroSection: React.FC = () => {
   );
 };
 
-// Glitch Button Component for Hero
-const GlitchButton: React.FC<{ href: string; text: string }> = ({ href, text }) => {
-  const [isGlitching, setIsGlitching] = React.useState(false);
-  const [displayText, setDisplayText] = React.useState(text);
-
-  const glitchChars = ['#', '0', '2', 'A', '9', 'C', '3', '%', '4', '@', '$', '&', '*'];
-
-  const triggerGlitch = () => {
-    if (isGlitching) return;
-    
-    setIsGlitching(true);
-    
-    const glitchDuration = 400;
-    const glitchSteps = 6;
-    const stepDuration = glitchDuration / glitchSteps;
-    
-    let step = 0;
-    const glitchInterval = setInterval(() => {
-      if (step < glitchSteps - 2) {
-        const chars = text.split('');
-        const numToReplace = Math.floor(Math.random() * 2) + 1;
-        
-        for (let i = 0; i < numToReplace; i++) {
-          const randomIndex = Math.floor(Math.random() * chars.length);
-          chars[randomIndex] = glitchChars[Math.floor(Math.random() * glitchChars.length)];
-        }
-        
-        setDisplayText(chars.join(''));
-      } else {
-        setDisplayText(text);
-        clearInterval(glitchInterval);
-        setIsGlitching(false);
-      }
-      step++;
-    }, stepDuration);
-  };
-
-  return (
-    <motion.a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className={`inline-block bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-400 text-white px-6 sm:px-8 md:px-10 py-3 sm:py-4 md:py-5 text-lg sm:text-xl md:text-2xl lg:text-3xl font-black transform -rotate-1 hover:rotate-0 transition-all duration-300 border-3 border-black shadow-xl hover:shadow-2xl font-mono tracking-tight ${isGlitching ? 'glitch-button-active' : ''}`}
-      style={{ 
-        clipPath: 'polygon(5% 0%, 95% 0%, 100% 25%, 95% 100%, 5% 100%, 0% 75%)',
-        ...(isGlitching && {
-          textShadow: '2px 0 #ff0080, -2px 0 #00ffff, 0 0 10px #00ff41',
-          animation: 'glitch-skew 0.4s ease-in-out',
-        })
-      }}
-      whileHover={{ 
-        scale: 1.05,
-        rotate: [0, -2, 2, 0],
-        boxShadow: '8px 8px 0px #000'
-      }}
-      whileTap={{ scale: 0.95 }}
-      onMouseEnter={triggerGlitch}
-    >
-      {displayText}
-      
-      {/* Scanlines effect during glitch */}
-      {isGlitching && (
-        <>
-          <span 
-            className="absolute inset-0 pointer-events-none"
-            style={{
-              background: 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 255, 65, 0.2) 2px, rgba(0, 255, 65, 0.2) 4px)',
-              animation: 'scanlines 0.1s linear infinite'
-            }}
-          />
-          <span 
-            className="absolute inset-0 pointer-events-none"
-            style={{
-              background: 'linear-gradient(90deg, transparent 0%, rgba(255, 0, 128, 0.3) 50%, transparent 100%)',
-              animation: 'glitch-sweep 0.4s ease-in-out'
-            }}
-          />
-        </>
-      )}
-    </motion.a>
-  );
-};
 export default HeroSection;
