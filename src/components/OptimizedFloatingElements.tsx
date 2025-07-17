@@ -47,8 +47,8 @@ const OptimizedFloatingElements: React.FC = () => {
     {
       src: img10,
       alt: "Skateopia Statue",
-      className: "w-16 sm:w-24 md:w-32 h-auto opacity-60 sm:opacity-70",
-      position: { top: '15%', left: '8%' },
+      className: "w-12 sm:w-16 md:w-24 lg:w-32 h-auto opacity-50 sm:opacity-60 md:opacity-70",
+      position: { top: '10%', left: '15%' }, // Above logo, left side
       animation: {
         y: [0, -15, 0],
         rotate: [0, 3, -3, 0],
@@ -59,8 +59,8 @@ const OptimizedFloatingElements: React.FC = () => {
     {
       src: img13,
       alt: "Skater Character",
-      className: "w-14 sm:w-20 md:w-24 h-auto opacity-60 sm:opacity-70",
-      position: { top: '55%', right: '12%' },
+      className: "w-10 sm:w-14 md:w-20 lg:w-24 h-auto opacity-50 sm:opacity-60 md:opacity-70",
+      position: { top: '10%', right: '15%' }, // Above logo, right side
       animation: {
         x: [0, 8, -8, 0],
         y: [0, -12, 0],
@@ -71,8 +71,8 @@ const OptimizedFloatingElements: React.FC = () => {
     {
       src: img2,
       alt: "Skate Shoe",
-      className: "w-12 sm:w-16 md:w-20 h-auto opacity-55 sm:opacity-70",
-      position: { top: '35%', left: '75%' },
+      className: "w-8 sm:w-12 md:w-16 lg:w-20 h-auto opacity-45 sm:opacity-55 md:opacity-70",
+      position: { top: '45%', left: '8%' }, // Left of logo, middle height
       animation: {
         rotate: [0, 12, -12, 0],
         scale: [1, 1.05, 1],
@@ -83,8 +83,8 @@ const OptimizedFloatingElements: React.FC = () => {
     {
       src: img9,
       alt: "Pink Skateboard",
-      className: "w-18 sm:w-22 md:w-28 h-auto opacity-60 sm:opacity-70",
-      position: { bottom: '25%', right: '20%' },
+      className: "w-12 sm:w-16 md:w-22 lg:w-28 h-auto opacity-50 sm:opacity-60 md:opacity-70",
+      position: { top: '45%', right: '8%' }, // Right of logo, middle height
       animation: {
         y: [0, -20, 0],
         rotate: [0, -8, 8, 0],
@@ -95,8 +95,8 @@ const OptimizedFloatingElements: React.FC = () => {
     {
       src: img5,
       alt: "Red Star",
-      className: "w-10 sm:w-14 md:w-16 h-auto opacity-55 sm:opacity-70",
-      position: { top: '20%', right: '25%' },
+      className: "w-6 sm:w-8 md:w-12 lg:w-16 h-auto opacity-45 sm:opacity-55 md:opacity-70",
+      position: { top: '70%', left: '20%' }, // Below logo, left side
       animation: {
         rotate: [0, 360],
         scale: [1, 1.1, 1],
@@ -107,8 +107,8 @@ const OptimizedFloatingElements: React.FC = () => {
     {
       src: img5,
       alt: "Red Star Small",
-      className: "w-8 sm:w-10 md:w-12 h-auto opacity-50 sm:opacity-50",
-      position: { bottom: '35%', left: '25%' },
+      className: "w-6 sm:w-8 md:w-10 lg:w-12 h-auto opacity-40 sm:opacity-45 md:opacity-50",
+      position: { top: '70%', right: '20%' }, // Below logo, right side
       animation: {
         rotate: [0, -360],
         y: [0, -25, 0],
@@ -119,8 +119,8 @@ const OptimizedFloatingElements: React.FC = () => {
     {
       src: img4,
       alt: "Skater Silhouette",
-      className: "w-14 sm:w-20 md:w-24 h-auto opacity-55 sm:opacity-65",
-      position: { top: '45%', left: '15%' },
+      className: "w-10 sm:w-14 md:w-18 lg:w-24 h-auto opacity-45 sm:opacity-55 md:opacity-65",
+      position: { top: '25%', left: '50%', transform: 'translateX(-50%)' }, // Above logo, center
       animation: {
         x: [0, 10, -5, 0],
         rotate: [0, 5, -5, 0],
@@ -131,8 +131,8 @@ const OptimizedFloatingElements: React.FC = () => {
     {
       src: img6,
       alt: "Skull Design",
-      className: "w-10 sm:w-14 md:w-18 h-auto opacity-50 sm:opacity-60",
-      position: { top: '25%', right: '8%' },
+      className: "w-8 sm:w-10 md:w-14 lg:w-18 h-auto opacity-40 sm:opacity-50 md:opacity-60",
+      position: { top: '65%', left: '50%', transform: 'translateX(-50%)' }, // Below logo, center
       animation: {
         y: [0, -18, 0],
         scale: [1, 1.15, 1],
@@ -143,8 +143,8 @@ const OptimizedFloatingElements: React.FC = () => {
     {
       src: img7,
       alt: "Skull Design Alt",
-      className: "w-9 sm:w-12 md:w-16 h-auto opacity-50 sm:opacity-55",
-      position: { bottom: '45%', left: '10%' },
+      className: "w-7 sm:w-9 md:w-12 lg:w-16 h-auto opacity-40 sm:opacity-50 md:opacity-55",
+      position: { top: '35%', left: '25%' }, // Left side, slightly below center
       animation: {
         rotate: [0, 180, 360],
         y: [0, -15, 0],
@@ -155,8 +155,8 @@ const OptimizedFloatingElements: React.FC = () => {
     {
       src: img8,
       alt: "Melting Smiley",
-      className: "w-12 sm:w-16 md:w-20 h-auto opacity-55 sm:opacity-70",
-      position: { top: '65%', right: '15%' },
+      className: "w-8 sm:w-12 md:w-16 lg:w-20 h-auto opacity-45 sm:opacity-55 md:opacity-70",
+      position: { top: '35%', right: '25%' }, // Right side, slightly below center
       animation: {
         x: [0, -12, 12, 0],
         rotate: [0, -8, 8, 0],
