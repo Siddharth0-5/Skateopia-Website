@@ -297,17 +297,6 @@ html {
   html {
     scrollbar-width: none;
   }
-  
-  /* Ensure floating elements don't interfere with text on mobile */
-  .floating-elements-container {
-    z-index: 5 !important;
-  }
-  
-  /* Reduce floating element interaction on mobile */
-  .floating-element {
-    pointer-events: none !important;
-    transform: none !important;
-  }
 }
 
 /* High DPI display optimizations */
