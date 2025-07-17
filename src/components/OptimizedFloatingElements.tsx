@@ -47,8 +47,8 @@ const OptimizedFloatingElements: React.FC = () => {
     {
       src: img10,
       alt: "Skateopia Statue",
-      className: "w-20 sm:w-24 md:w-32 h-auto opacity-70",
-      position: { top: '15%', left: '8%' },
+      className: "w-12 sm:w-24 md:w-32 h-auto opacity-40 sm:opacity-70",
+      position: { top: '5%', left: '2%' },
       animation: {
         y: [0, -15, 0],
         rotate: [0, 3, -3, 0],
@@ -59,8 +59,8 @@ const OptimizedFloatingElements: React.FC = () => {
     {
       src: img13,
       alt: "Skater Character",
-      className: "w-16 sm:w-20 md:w-24 h-auto opacity-70",
-      position: { top: '55%', right: '12%' },
+      className: "w-10 sm:w-20 md:w-24 h-auto opacity-40 sm:opacity-70",
+      position: { top: '45%', right: '2%' },
       animation: {
         x: [0, 8, -8, 0],
         y: [0, -12, 0],
@@ -71,8 +71,8 @@ const OptimizedFloatingElements: React.FC = () => {
     {
       src: img2,
       alt: "Skate Shoe",
-      className: "w-14 sm:w-16 md:w-20 h-auto opacity-70",
-      position: { top: '35%', right: '5%' },
+      className: "w-8 sm:w-16 md:w-20 h-auto opacity-30 sm:opacity-70",
+      position: { top: '25%', right: '85%' },
       animation: {
         rotate: [0, 12, -12, 0],
         scale: [1, 1.05, 1],
@@ -83,8 +83,8 @@ const OptimizedFloatingElements: React.FC = () => {
     {
       src: img9,
       alt: "Pink Skateboard",
-      className: "w-18 sm:w-22 md:w-28 h-auto opacity-70",
-      position: { bottom: '25%', left: '3%' },
+      className: "w-12 sm:w-22 md:w-28 h-auto opacity-40 sm:opacity-70",
+      position: { bottom: '15%', left: '85%' },
       animation: {
         y: [0, -20, 0],
         rotate: [0, -8, 8, 0],
@@ -95,8 +95,8 @@ const OptimizedFloatingElements: React.FC = () => {
     {
       src: img5,
       alt: "Red Star",
-      className: "w-12 sm:w-14 md:w-16 h-auto opacity-70",
-      position: { top: '12%', right: '20%' },
+      className: "w-6 sm:w-14 md:w-16 h-auto opacity-30 sm:opacity-70",
+      position: { top: '8%', right: '85%' },
       animation: {
         rotate: [0, 360],
         scale: [1, 1.1, 1],
@@ -107,8 +107,8 @@ const OptimizedFloatingElements: React.FC = () => {
     {
       src: img5,
       alt: "Red Star Small",
-      className: "w-8 sm:w-10 md:w-12 h-auto opacity-50",
-      position: { bottom: '18%', right: '35%' },
+      className: "w-4 sm:w-10 md:w-12 h-auto opacity-25 sm:opacity-50",
+      position: { bottom: '8%', right: '15%' },
       animation: {
         rotate: [0, -360],
         y: [0, -25, 0],
@@ -119,8 +119,8 @@ const OptimizedFloatingElements: React.FC = () => {
     {
       src: img4,
       alt: "Skater Silhouette",
-      className: "w-16 sm:w-20 md:w-24 h-auto opacity-65",
-      position: { top: '45%', left: '15%' },
+      className: "w-8 sm:w-20 md:w-24 h-auto opacity-30 sm:opacity-65",
+      position: { top: '35%', left: '2%' },
       animation: {
         x: [0, 10, -5, 0],
         rotate: [0, 5, -5, 0],
@@ -131,8 +131,8 @@ const OptimizedFloatingElements: React.FC = () => {
     {
       src: img6,
       alt: "Skull Design",
-      className: "w-12 sm:w-14 md:w-18 h-auto opacity-60",
-      position: { top: '25%', left: '70%' },
+      className: "w-6 sm:w-14 md:w-18 h-auto opacity-25 sm:opacity-60",
+      position: { top: '15%', left: '88%' },
       animation: {
         y: [0, -18, 0],
         scale: [1, 1.15, 1],
@@ -143,8 +143,8 @@ const OptimizedFloatingElements: React.FC = () => {
     {
       src: img7,
       alt: "Skull Design Alt",
-      className: "w-10 sm:w-12 md:w-16 h-auto opacity-55",
-      position: { bottom: '35%', left: '25%' },
+      className: "w-5 sm:w-12 md:w-16 h-auto opacity-25 sm:opacity-55",
+      position: { bottom: '25%', left: '5%' },
       animation: {
         rotate: [0, 180, 360],
         y: [0, -15, 0],
@@ -155,8 +155,8 @@ const OptimizedFloatingElements: React.FC = () => {
     {
       src: img8,
       alt: "Melting Smiley",
-      className: "w-14 sm:w-16 md:w-20 h-auto opacity-70",
-      position: { top: '65%', left: '60%' },
+      className: "w-8 sm:w-16 md:w-20 h-auto opacity-30 sm:opacity-70",
+      position: { top: '55%', left: '88%' },
       animation: {
         x: [0, -12, 12, 0],
         rotate: [0, -8, 8, 0],
@@ -166,12 +166,18 @@ const OptimizedFloatingElements: React.FC = () => {
     }
   ];
 
+  // Add mobile-specific styles
+  const mobileContainerStyle = {
+    '@media (max-width: 768px)': {
+      zIndex: 5, // Lower z-index on mobile to stay behind text
+    }
+  };
   if (!isVisible) return null;
 
   return (
     <div 
       ref={containerRef}
-      className="fixed inset-0 pointer-events-none z-10 overflow-hidden"
+      className="fixed inset-0 pointer-events-none z-10 md:z-10 overflow-hidden"
       style={{ willChange: 'auto' }}
     >
       {elements.map((element, index) => (
